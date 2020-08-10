@@ -1,0 +1,46 @@
+* {
+    font-family: 'Creepster', cursive;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100vh;
+}
+
+body {
+    background: radial-gradient(#9D5900, #3D2200);
+}
+
+.page-title {
+    color: #FF6D00;
+    text-align: center;
+    font-size: 6em;
+}
+
+.game-info {
+    color: #FFBB89;
+    font-size: 4em;
+}
+
+.game-info-container {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 10px;
+    margin: 50px;
+    justify-content: center;
+}
+
+.card {
+    background-color: black;
+    height: 175px;
+    width: 125px;
+}
