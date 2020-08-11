@@ -61,3 +61,11 @@ body {
     transition: transform 0.5s ease-in-out;
     backface-visibility: hidden;
 }
+
+.card.visible .card-back {
+    transform: rotateY(-180deg);
+}
+
+.card.visible .card-front {
+    transform: rotateY(0);
+}
