@@ -114,6 +114,32 @@ body {
     right: 0;
 }
 
+.spider {
+    align-self: flex-start;
+    transition: transform 0.1s ease-in-out;
+    transform: translateY(-10px);
+}
+
+.card-back:hover .spider {
+    transform: translateY(0);
+}
+
+.card-value {
+    position: relative;
+    transition: transform 0.1s ease-in-out;
+    transform: scale(.9);
+}
+
+.card-front:hover .card-value {
+    transform: scale(1);
+}
+
+.card-front {
+    background-color: #FFBB89;
+    border-color: #333;
+    transform: rotateY(180deg);
+}
+
 @keyframes dance {
 
     0%,
