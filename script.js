@@ -33,6 +33,20 @@ class AudioController {
 
 }
 
+class MixOrMatch {
+    constructor(totalTime, cards) {
+        this.cardsArray = cards;
+        this.totalTime = totalTime;
+        tshi.timeRemaining = totalTime;
+        this.timer = document.getElementsById('time-remaining');
+        this.ticker = document.getElementById('flips');
+        this.audioController = new AudioController();
+    }
+    startGame() {
+        this.cardToCheck = null;
+    }
+}
+
 function ready() {
     let overlays = Array.from(document.getElementsByClassName('overlay-text'));
     let cards = Array.from(document.getElementsByClassName('card'));
