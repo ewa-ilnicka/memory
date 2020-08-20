@@ -41,7 +41,7 @@ body {
 
 .card {
     position: relative;
-    cursor: url("Assets/Cursors/GhostHover.cur"), auto;
+    cursor: url("assets/Cursors/GhostHover.cur"), auto;
     height: 175px;
     width: 125px;
 }
