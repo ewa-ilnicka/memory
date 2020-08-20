@@ -44,6 +44,10 @@ class MixOrMatch {
     }
     startGame() {
         this.cardToCheck = null;
+        this.totalClick = 0;
+        this.timeRemaining = this.totalTime;
+        this.matchedCards = [];
+        this.budy = true;
     }
 }
 
