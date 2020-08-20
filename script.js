@@ -49,6 +49,9 @@ class MixOrMatch {
         this.matchedCards = [];
         this.budy = true;
     }
+    canFlipCard(card) {
+        return (!this.budy && !this.matchedCards.includes(card) && card !== this.cardToCheck)
+    }
 }
 
 function ready() {
