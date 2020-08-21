@@ -53,7 +53,7 @@ class MixOrMatch {
         setTimeout(() => {
             this.audioController.startMusic();
             this.schuffleCards();
-            this.countdown = this.startCountdown();
+            this.countDown = this.startCountDown();
             this.busy = false;
         }, 500);
         this.hideCards();
@@ -75,6 +75,21 @@ class MixOrMatch {
             this.ticker.innerText = this.totalClicks;
             card.classList.add('visible');
         }
+    }
+
+    startCountDown() {
+        return setInterval(() => {
+            this.timeRemaining--;
+            this.timer.innerText = this.timeRemaining;
+            if (this.timeRemaining === 0)
+                this.gameOver();
+        }, 1000);
+    }
+
+    gameOver() {
+        clearInterval(this.countDown);
+        this.audioController.gameOver();
+        document.getElementById('game-over-text').classList.add('visible');
     }
 
     schuffleCards() {
