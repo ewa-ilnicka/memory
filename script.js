@@ -5,7 +5,7 @@ class AudioController {
         this.matchSound = new Audio('assets/Audio/match.wav');
         this.victorySound = new Audio('assets/Audio/victory.wav');
         this.gameOverSound = new Audio('assets/Audio/gameOver.wav');
-        this.bgMusic.volume = 0.5;
+        this.bgMusic.volume = 0.3;
         this.bgMusic.loop = true;
     }
 
@@ -74,7 +74,38 @@ class MixOrMatch {
             this.totalClicks++;
             this.ticker.innerText = this.totalClicks;
             card.classList.add('visible');
+
+            if (this.cardToCheck)
+                this.checkForCardMatch(card);
+            else
+                this.cardToCheck = card;
         }
+    }
+    checkForCardMatch(card) {
+        if (this.getCardType(card) === this.getCardType(this.cardToCheck))
+            this.checkForCardMatch(card, this.cardToChech);
+        else
+            this.cardMisMatch(card, this.cardToCheck);
+    }
+
+    cardMatch(card1, card2) {
+        this.matchedCards.push(card1);
+        this.matchedCards.push(card2);
+        card1.classList.add('matched');
+        this.audioController.match();
+        if (this.matchedCards.length === this.cardsArray)
+            this.victory();
+    }
+    cardMisMatch(card) {
+        this.busy = true;
+        setTimeout(() => {
+            card1.classList.remove('visible');
+            card2.classList.remove('visible');
+            this.busy = false;
+        }, 1000);
+    }
+    getCardType(card) {
+        return card.getElementsByClassName('card-value')[0].src;
     }
 
     startCountDown() {
@@ -90,6 +121,11 @@ class MixOrMatch {
         clearInterval(this.countDown);
         this.audioController.gameOver();
         document.getElementById('game-over-text').classList.add('visible');
+    }
+    victory() {
+        clearInterval(this.countDown);
+        this.audioController.victory();
+        document.getElementById('victory-text').classList.add('visible');
     }
 
     schuffleCards() {
