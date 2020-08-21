@@ -30,7 +30,6 @@ class AudioController {
         this.stopMusic();
         this.gameOverSound.play();
     }
-
 }
 
 class MixOrMatch {
@@ -75,28 +74,32 @@ class MixOrMatch {
             this.ticker.innerText = this.totalClicks;
             card.classList.add('visible');
 
-            if (this.cardToCheck)
+            if (this.cardToCheck) {
                 this.checkForCardMatch(card);
-            else
+            } else {
                 this.cardToCheck = card;
+            }
         }
     }
     checkForCardMatch(card) {
         if (this.getCardType(card) === this.getCardType(this.cardToCheck))
-            this.checkForCardMatch(card, this.cardToChech);
+            this.cardMatch(card, this.cardToCheck);
         else
             this.cardMisMatch(card, this.cardToCheck);
+
+        this.cardToCheck = null;
     }
 
     cardMatch(card1, card2) {
         this.matchedCards.push(card1);
         this.matchedCards.push(card2);
         card1.classList.add('matched');
+        card2.classList.add('matched');
         this.audioController.match();
-        if (this.matchedCards.length === this.cardsArray)
+        if (this.matchedCards.length === this.cardsArray.length)
             this.victory();
     }
-    cardMisMatch(card) {
+    cardMisMatch(card1, card2) {
         this.busy = true;
         setTimeout(() => {
             card1.classList.remove('visible');
